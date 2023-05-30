@@ -1,12 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
- background: radial-gradient(circle, #342c2c, #2b2527, #221f20, #191819, #111111);
-}
-
 bubles {
   border-radius:0%;
   position: absolute;

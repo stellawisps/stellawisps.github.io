@@ -27,7 +27,7 @@ document.addEventListener('mousemove', e=> {
     if (!a & (Math.random()>0.7)){
     let bubles = document.createElement('bubles');
     let x = clamp(e.pageX + (Math.random()-.5)*50,50,windowWidth-75);
-    let y = clamp(e.pageY + (Math.random()-.5)*50,50,2450);
+    let y = clamp(e.pageY + (Math.random()-.5)*50,50,1650);
     bubles.style.left = x + "px";
     bubles.style.top = y + "px";
     let size = (Math.random() * 50);

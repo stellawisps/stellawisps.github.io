@@ -67,6 +67,10 @@ function setup() {
     NGButton.imageScale = 0.8
   // DownLines	resizeCanvas(windowWidth*.5, windowHeight*5);
   background(0)
+
+  function touchEnded(event){
+    mouseReleased(event);
+  }
   buttonArr = [
   {x:1.65,y:2.7,image:twitterLogo,offset:1000,link:'https://www.youtube.com/@stellawisps'},
   {x:2.5,y:2.3,image:twitterLogo,offset:5300,link:'https://twitter.com/stellawisps'},
@@ -148,8 +152,8 @@ function draw() {
   image(porTop,portalTransformX,portalTransformY,porTop.width,porTop.height/2)
   var stellaOffset = sin((frameCount+(34*50))/50)*10
   image(stella,(windowWidth*WWDiv)+stellaOffset,1300,stella.width/2,stella.height/2)
-  imageMode(CORNER)
-  image(signature,50,25,signature.width,signature.height)
+
+  image(signature,150,1600,signature.width,signature.height)
   //SOCIAL LINKS
   youtubeButton.x = (windowWidth * WWDiv) + sin((frameCount+(10*50))/50)*5
   youtubeButton.y = 300

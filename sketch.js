@@ -18,7 +18,15 @@ function setup() {
     youtubeButton = new Clickable()
 
     youtubeButton.onPress = function () {
-      window.open(buttonArr[0].link)
+      //YOUI NEED T HIS BECAUSE FOR SOME REASON WINDOW DOT OPEN DONT WORK???????????????
+      if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        
+        window.location.href = buttonArr[0].link
+      }else{
+       
+        window.open(buttonArr[0].link)
+        
+      }
     }
   
     youtubeButton.rectMode = CENTER
@@ -26,7 +34,7 @@ function setup() {
     youtubeButton.stroke = "#ff0062"; 
     youtubeButton.strokeWeight = 5
     youtubeButton.cornerRadius = 0
-    youtubeButton.resize(200, 200);
+    youtubeButton.resize(160, 160);
     youtubeButton.image = youtubeLogo
     youtubeButton.fitImage = true
     youtubeButton.text = ""
@@ -35,7 +43,14 @@ function setup() {
     twitterButton = new Clickable()
 
     twitterButton.onPress = function () {
-      window.open(buttonArr[1].link)
+      if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        
+        window.location.href = buttonArr[1].link
+      }else{
+       
+        window.open(buttonArr[1].link)
+        
+      }
     }
   
     twitterButton.rectMode = CENTER
@@ -43,7 +58,7 @@ function setup() {
     twitterButton.stroke = "#ff0062"; 
     twitterButton.strokeWeight = 5
     twitterButton.cornerRadius = 0
-    twitterButton.resize(200, 200);
+    twitterButton.resize(150, 150);
     twitterButton.image = twitterLogo
     twitterButton.fitImage = true
     twitterButton.text = ""
@@ -52,7 +67,17 @@ function setup() {
     NGButton = new Clickable()
 
     NGButton.onPress = function () {
-      window.open(buttonArr[2].link)
+      if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        
+        window.location.href = buttonArr[2].link
+      }else{
+       
+        window.open(buttonArr[2].link)
+        
+      }
+      
+      
+      
     }
   
     NGButton.rectMode = CENTER
@@ -60,7 +85,7 @@ function setup() {
     NGButton.stroke = "#ff0062"; 
     NGButton.strokeWeight = 5
     NGButton.cornerRadius = 0
-    NGButton.resize(200, 200);
+    NGButton.resize(155, 155);
     NGButton.image = ngLogo
     NGButton.fitImage = true
     NGButton.text = ""
@@ -68,9 +93,7 @@ function setup() {
   // DownLines	resizeCanvas(windowWidth*.5, windowHeight*5);
   background(0)
 
-  function touchEnded(event){
-    mouseReleased(event);
-  }
+
   buttonArr = [
   {x:1.65,y:2.7,image:twitterLogo,offset:1000,link:'https://www.youtube.com/@stellawisps'},
   {x:2.5,y:2.3,image:twitterLogo,offset:5300,link:'https://twitter.com/stellawisps'},
@@ -93,10 +116,6 @@ function preload(){
   signature = loadImage('img/Signature.png')
 }
 
-
-/* function touchEnded(event){
-  mouseReleased(event);
-} */
 
 
 /* function mouseReleased(event){
@@ -164,8 +183,9 @@ function draw() {
   twitterButton.draw()
 
   NGButton.x = (windowWidth * WWDiv) + sin((frameCount+(22*50))/50)*5
-  NGButton.y = 950
+  NGButton.y = 1000
   NGButton.draw()
+  stroke(255)
 }
 
 function windowResized() {
@@ -177,8 +197,6 @@ function windowResized() {
 	
 	background(0)
   }
-
-
 
 
 

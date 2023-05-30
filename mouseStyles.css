@@ -10,7 +10,6 @@ bubles {
   background-color: rgba(255, 192, 203, 0);
   transform: translate(-50%, -50%);
   animation: animatedDBackground 1s linear infinite;
-  pointer-events: none;
   
 }
 

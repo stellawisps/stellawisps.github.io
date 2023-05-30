@@ -1,12 +1,12 @@
 html {
   margin: 0;
   padding: 0;
-  pointer-events: none;
+
 }
 
 canvas {
   display: block;
-  pointer-events: none;
+
 }
 
 body {
@@ -19,6 +19,6 @@ body {
 
   /* This centers our sketch vertically. */
   align-items: center;
-  pointer-events: none;
+
   }
 

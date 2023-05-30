@@ -9,6 +9,20 @@ canvas {
 
 }
 
+img {
+  position: fixed;
+  align-self: flex-start;
+  bottom: 20px; left: 40px;
+  animation: Rotations ease-in-out 8s infinite
+}
+
+@keyframes Rotations {
+  0% { transform: rotate(-12deg)}
+  50% { transform: rotate(24deg) }
+  100% { transform: rotate(-12deg)}
+}
+
+
 body {
   margin: 0;
 

@@ -172,7 +172,10 @@ function draw() {
   var stellaOffset = sin((frameCount+(34*50))/50)*10
   image(stella,(windowWidth*WWDiv)+stellaOffset,1300,stella.width/2,stella.height/2)
 
-  image(signature,150,1600,signature.width,signature.height)
+  //SIGNATURE
+  //var viewportOffset = select("canvas").elt.parentElement.parentElement.parentElement.scrollTop
+  //print(viewportOffset)
+  //image(signature,150,(displayHeight-150)+viewportOffset,signature.width,signature.height)
   //SOCIAL LINKS
   youtubeButton.x = (windowWidth * WWDiv) + sin((frameCount+(10*50))/50)*5
   youtubeButton.y = 300

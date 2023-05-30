@@ -1,0 +1,33 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+ background: radial-gradient(circle, #342c2c, #2b2527, #221f20, #191819, #111111);
+}
+
+bubles {
+  border-radius:0%;
+  position: absolute;
+  pointer-events: none;
+  background-image: url("img/MOUSESTARLOL.png");
+  background-size: cover;
+  background-color: rgba(255, 192, 203, 0);
+  transform: translate(-50%, -50%);
+  animation: animatedDBackground 1s linear infinite;
+  pointer-events: none;
+  
+}
+
+@keyframes animatedDBackground {
+    0% { translate: -0px -0px;
+        scale: 0%;}
+    50% { translate: -10px -25px;
+        scale: 100% }
+    100% { translate: -20px -45px;
+    scale: 0%;}
+}
+
+
+

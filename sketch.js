@@ -1,192 +1,184 @@
-var maxLines = 100
+
 var linArr = []
-var buttonArr = []
-var buttonSize1 = 1
-var buttonSize2 = 1
-var buttonSize3 = 1
-var buttonSize4 = 1
-var windowMult = 1
+
+var youtubeButton
+
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  // DownLines
-  for (let i = 0; i < maxLines; i++){
-    let tmpLine = {y:i/maxLines,colOff:Math.random(),index:i}
-    linArr.push(tmpLine)
+  createCanvas(windowWidth*.66, 2500);
+  if (windowWidth < 1000){
+    resizeCanvas(windowWidth, 1700);
+  } else {
+    resizeCanvas(windowWidth*.66, 1700);
   }
+    for (let i = 0; i < 28; i++){
+      let meowTemp = {x:-30,y:i * 40,index:i}
+      linArr.push(meowTemp)
+    }
+
+    youtubeButton = new Clickable()
+
+    youtubeButton.onPress = function () {
+      window.open(buttonArr[0].link)
+    }
+  
+    youtubeButton.rectMode = CENTER
+    youtubeButton.color = '#000000'
+    youtubeButton.stroke = "#ff0062"; 
+    youtubeButton.strokeWeight = 5
+    youtubeButton.cornerRadius = 0
+    youtubeButton.resize(200, 200);
+    youtubeButton.image = youtubeLogo
+    youtubeButton.fitImage = true
+    youtubeButton.text = ""
+    youtubeButton.imageScale = 0.8
+
+    twitterButton = new Clickable()
+
+    twitterButton.onPress = function () {
+      window.open(buttonArr[1].link)
+    }
+  
+    twitterButton.rectMode = CENTER
+    twitterButton.color = '#000000'
+    twitterButton.stroke = "#ff0062"; 
+    twitterButton.strokeWeight = 5
+    twitterButton.cornerRadius = 0
+    twitterButton.resize(200, 200);
+    twitterButton.image = twitterLogo
+    twitterButton.fitImage = true
+    twitterButton.text = ""
+    twitterButton.imageScale = 0.8
+
+    NGButton = new Clickable()
+
+    NGButton.onPress = function () {
+      window.open(buttonArr[2].link)
+    }
+  
+    NGButton.rectMode = CENTER
+    NGButton.color = '#000000'
+    NGButton.stroke = "#ff0062"; 
+    NGButton.strokeWeight = 5
+    NGButton.cornerRadius = 0
+    NGButton.resize(200, 200);
+    NGButton.image = ngLogo
+    NGButton.fitImage = true
+    NGButton.text = ""
+    NGButton.imageScale = 0.8
+  // DownLines	resizeCanvas(windowWidth*.5, windowHeight*5);
+  background(0)
   buttonArr = [
-  {x:1.65,y:2.7,image:twitterLogo,offset:1000,link:'https://twitter.com/stellawisps'},
+  {x:1.65,y:2.7,image:twitterLogo,offset:1000,link:'https://www.youtube.com/@stellawisps'},
   {x:2.5,y:2.3,image:twitterLogo,offset:5300,link:'https://twitter.com/stellawisps'},
-  {x:1.7,y:1.5,image:twitterLogo,offset:3610,link:'https://twitter.com/stellawisps'},
+  {x:1.7,y:1.5,image:twitterLogo,offset:3610,link:'https://stellawisps.newgrounds.com/'},
   {x:2.5,y:1.3,image:twitterLogo,offset:3610,link:'https://twitter.com/stellawisps'}
 ]
 
 }
+
 let icon;
+
 function preload(){
-  porTop = loadImage('img/porTop2.png')
-  porBot = loadImage('img/porBottom2.png')
+  porTop = loadImage('img/Portal_Bot.png')
+  porBot = loadImage('img/Portal_Top.png')
+  stella = loadImage('img/StellaUpsideDown.png')
+  stellaTailPiece = loadImage('img/StellaTail.png')
   twitterLogo = loadImage('img/2021 Twitter logo - white.png')
+  youtubeLogo = loadImage('img/yt_logo_mono_dark.png')
+  ngLogo = loadImage('img/ng_tank.png')
+  signature = loadImage('img/Signature.png')
 }
 
 
-function touchEnded(event){
+/* function touchEnded(event){
   mouseReleased(event);
-}
+} */
 
 
-function mouseReleased(event){
+/* function mouseReleased(event){
   for(var i = 0; i,buttonArr.length;i++){
     if (i%2 == 0) { 
       if (getDistance(windowWidth/(buttonArr[i].x-(windowMult/4)),windowHeight/buttonArr[i].y,mouseX,mouseY) < windowHeight/13){
-        window.open(buttonArr[i].link)
+        window.location.href = 'Second.html';
       }   
   } else{
     if (getDistance(windowWidth/(buttonArr[i].x+(windowMult*1)),windowHeight/buttonArr[i].y,mouseX,mouseY) < windowHeight/13){
       window.open(buttonArr[i].link)
     }  
   }
-}
+} */
 
- 
-}
 
+var WWDiv
 
 function draw() {
-  colorMode(HSB)
-  background(0);
- 
-  var strokeWeg = windowHeight/120.0
-  image(porBot,((windowWidth/2.0)-((windowHeight/3)/2.0))+(sin(frameCount/100)*2),(sin(frameCount/24)-1)*5,windowHeight/3,windowHeight/3)
-  rectMode(CENTER)
   
-	buttonLoc1 = createVector(
-    windowWidth/(buttonArr[0].x-(windowMult/4))+(sin((frameCount+buttonArr[0].offset)/100)*5),
-    windowHeight/buttonArr[0].y+(cos((frameCount+buttonArr[0].offset)/67)*5))
-
-	buttonLoc2 = createVector(
-	windowWidth/(buttonArr[1].x+(windowMult*1))+(sin((frameCount+buttonArr[1].offset)/90)*5),
-	windowHeight/buttonArr[1].y+(cos((frameCount+buttonArr[1].offset)/67)*5))
-
-	buttonLoc3 = createVector(
-	windowWidth/(buttonArr[2].x-(windowMult/4))+(sin((frameCount+buttonArr[2].offset)/100)*5),
-	windowHeight/buttonArr[2].y+(cos((frameCount+buttonArr[2].offset)/67)*5))
-
-  buttonLoc4 = createVector(
-    windowWidth/(buttonArr[3].x+(windowMult/1))+(sin((frameCount+buttonArr[3].offset)/100)*5),
-    windowHeight/buttonArr[3].y+(cos((frameCount+buttonArr[3].offset)/67)*5))
-  for (var inst of linArr){
-    push()
-   if (inst.index == 30 || inst.index == 45){
-      stroke(lerp(246,326,inst.y), lerp(100,100,inst.y), 95+(inst.colOff*10))
-      strokeWeight(strokeWeg)
-      line(
-        windowWidth/2.0+((sin((frameCount+(inst.y*-800))/10)+windowWidth/44)+(sin((frameCount*.5+(inst.y*-700))/5)*5)),
-        windowHeight*inst.y,
-        buttonLoc1.x,
-        buttonLoc1.y)
-    }
-  if (inst.index == 38 || inst.index == 50 || inst.index == 60){
-      stroke(lerp(246,326,inst.y), lerp(100,100,inst.y), 95+(inst.colOff*10))
-      strokeWeight(strokeWeg)
-      line(
-        windowWidth/2.0+((sin((frameCount+(inst.y*-800))/10)-windowWidth/44)+(sin((frameCount*.5+(inst.y*-700))/5)*5)),
-        windowHeight*inst.y,
-        buttonLoc2.x,
-		buttonLoc2.y)
-    }
-  if (inst.index == 55 || inst.index == 72){
-      stroke(lerp(246,326,inst.y), lerp(100,100,inst.y), 95+(inst.colOff*10))
-      strokeWeight(strokeWeg)
-      line(
-        windowWidth/2.0+((sin((frameCount+(inst.y*-800))/10)+windowWidth/44)+(sin((frameCount*.5+(inst.y*-700))/5)*5)),
-        windowHeight*inst.y,
-        buttonLoc3.x,
-        buttonLoc3.y)
-    }
-    if (inst.index == 74 || inst.index == 60 || inst.index == 80){
-      stroke(lerp(246,326,inst.y), lerp(100,100,inst.y), 95+(inst.colOff*10))
-      strokeWeight(strokeWeg)
-      line(
-        windowWidth/2.0+((sin((frameCount+(inst.y*-800))/10)-windowWidth/44)+(sin((frameCount*.5+(inst.y*-700))/5)*5)),
-        windowHeight*inst.y,
-        buttonLoc4.x,
-        buttonLoc4.y)
-    }
-    noStroke()
-    fill(lerp(246,326,inst.y), lerp(100,100,inst.y), 95+(inst.colOff*10))
-    rect(windowWidth/2.0+((sin((frameCount+(inst.y*-800))/10) -0  )+(sin((frameCount*.5+(inst.y*-700))/5)*5)),windowHeight*inst.y,windowWidth/22,windowHeight/120)
-    pop()
-	push()
-	fill(0,0,0)
-	strokeWeight(strokeWeg)
-	imageMode(CENTER)
-	
-	stroke(lerp(246,326,buttonLoc1.y/windowHeight), lerp(100,100,buttonLoc1.y/windowHeight), 95)
-	
-	circle(buttonLoc1.x,buttonLoc1.y,(windowHeight/10)*buttonSize1)
-	image(buttonArr[0].image,buttonLoc1.x,buttonLoc1.y,(windowHeight/15)*buttonSize1,(windowHeight/15)*buttonSize1)
-	
-	stroke(lerp(246,326,buttonLoc2.y/windowHeight), lerp(100,100,buttonLoc2.y/windowHeight), 95)
-	
-	circle(buttonLoc2.x,buttonLoc2.y,(windowHeight/10)*buttonSize2)
-	image(buttonArr[1].image,buttonLoc2.x,buttonLoc2.y,(windowHeight/14)*buttonSize2,(windowHeight/14)*buttonSize2)
-	
-	stroke(lerp(246,326,buttonLoc3.y/windowHeight), lerp(100,100,buttonLoc3.y/windowHeight), 95)
-	
-	circle(buttonLoc3.x,buttonLoc3.y,(windowHeight/10)*buttonSize3)
-	image(buttonArr[2].image,buttonLoc3.x,buttonLoc3.y,(windowHeight/14)*buttonSize3,(windowHeight/14)*buttonSize3)	
-
-  stroke(lerp(246,326,buttonLoc4.y/windowHeight), lerp(100,100,buttonLoc4.y/windowHeight), 95)
-	
-	circle(buttonLoc4.x,buttonLoc4.y,(windowHeight/10)*buttonSize4)
-	image(buttonArr[3].image,buttonLoc4.x,buttonLoc4.y,(windowHeight/12)*buttonSize4,(windowHeight/12)*buttonSize4)	
-	pop()
-
-
-	if (getDistance(buttonLoc1.x,buttonLoc1.y,mouseX,mouseY) < windowHeight/15){
-		buttonSize1 = lerp(buttonSize1, 1.2,0.0001*deltaTime)
-	} else {
-		buttonSize1 = lerp(buttonSize1, 1,0.0001*deltaTime)		
-	}
-	if (getDistance(buttonLoc2.x,buttonLoc2.y,mouseX,mouseY) < windowHeight/15){
-		buttonSize2 = lerp(buttonSize2, 1.2,0.0001*deltaTime)
-	} else {
-		buttonSize2 = lerp(buttonSize2, 1,0.0001*deltaTime)		
-	}
-	if (getDistance(buttonLoc3.x,buttonLoc3.y,mouseX,mouseY) < windowHeight/15){
-		buttonSize3 = lerp(buttonSize3, 1.2,0.0001*deltaTime)
-	} else {
-		buttonSize3 = lerp(buttonSize3, 1,0.0001*deltaTime)		
-	}
-	if (getDistance(buttonLoc4.x,buttonLoc4.y,mouseX,mouseY) < windowHeight/15){
-		buttonSize4 = lerp(buttonSize4, 1.2,0.0001*deltaTime)
-	} else {
-		buttonSize4 = lerp(buttonSize4, 1,0.0001*deltaTime)		
-	}  
-}
-  image(porTop,((windowWidth/2.0)-((windowHeight/3)/2.0))+(sin(frameCount/100)*2),(sin(frameCount/24)-1)*5,windowHeight/3,windowHeight/3)
-  
-  push()
-  translate(windowWidth/10,windowWidth/10)
-  rotate((sin(frameCount/20)*.1))
-  pop()
-  imageMode(CORNER)
-
-  if (windowWidth <= windowHeight){
-    windowMult = 1
+  background(0)
+  noStroke()
+  if (windowWidth < 1000){
+    WWDiv = 0.5
   } else{
-    windowMult=0
+    WWDiv = 0.33
   }
-}
+  //PORTAL TRANSFORM
+  var portalTransformX = ((windowWidth*WWDiv))+(cos(frameCount/41)*2)
+  var portalTransformY = (((sin(frameCount/60)-1)*5))
+  
+  //PORTAL BACK
+  imageMode(CENTER)
+  rectMode(CENTER)
+  image(porBot,portalTransformX,(portalTransformY+porBot.height/2)-132,porBot.width,porBot.height/2)
 
-function getDistance(x1,y1,x2,y2){
-	let y = x2-x1;
-	let x = y2-y1;
-	return Math.sqrt(x * x + y * y)
+
+
+
+  //STELLA TAIL
+  for (var inst of linArr){
+    var offsetPos = sin((frameCount+(inst.index*50))/50)*10
+    push()
+    
+    translate((windowWidth*WWDiv)+offsetPos,inst.y)
+    rotate(-offsetPos*.01)
+    image(stellaTailPiece,0,0,64+(inst.index*2),74)
+    pop()
+  }
+
+
+  //PORTAL FRONT AND STELLA BOTTOM
+  image(porTop,portalTransformX,portalTransformY,porTop.width,porTop.height/2)
+  var stellaOffset = sin((frameCount+(34*50))/50)*10
+  image(stella,(windowWidth*WWDiv)+stellaOffset,1300,stella.width/2,stella.height/2)
+  imageMode(CORNER)
+  image(signature,50,25,signature.width,signature.height)
+  //SOCIAL LINKS
+  youtubeButton.x = (windowWidth * WWDiv) + sin((frameCount+(10*50))/50)*5
+  youtubeButton.y = 300
+  youtubeButton.draw()
+
+  twitterButton.x = (windowWidth * WWDiv) + sin((frameCount+(17*50))/50)*5
+  twitterButton.y = 625
+  twitterButton.draw()
+
+  NGButton.x = (windowWidth * WWDiv) + sin((frameCount+(22*50))/50)*5
+  NGButton.y = 950
+  NGButton.draw()
 }
 
 function windowResized() {
-
-	resizeCanvas(windowWidth, windowHeight);
+  if (windowWidth < 1000){
+    resizeCanvas(windowWidth, 1700);
+  } else {
+    resizeCanvas(windowWidth*.66, 1700);
+  }
+	
 	background(0)
   }
+
+
+
+
+
+
+
+
+  

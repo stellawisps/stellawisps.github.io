@@ -90,6 +90,34 @@ function setup() {
     NGButton.fitImage = true
     NGButton.text = ""
     NGButton.imageScale = 0.8
+
+
+    KofiButton = new Clickable()
+
+    KofiButton.onPress = function () {
+      if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        
+        window.location.href = buttonArr[3].link
+      }else{
+       
+        window.open(buttonArr[3].link)
+        
+      }
+      
+      
+      
+    }
+  
+    KofiButton.rectMode = CENTER
+    KofiButton.color = '#000000'
+    KofiButton.stroke = "#ff0062"; 
+    KofiButton.strokeWeight = 5
+    KofiButton.cornerRadius = 0
+    KofiButton.resize(155, 155);
+    KofiButton.image = KofiLogo
+    KofiButton.fitImage = true
+    KofiButton.text = ""
+    KofiButton.imageScale = 1.25
   // DownLines	resizeCanvas(windowWidth*.5, windowHeight*5);
   background(0)
 
@@ -98,7 +126,7 @@ function setup() {
   {x:1.65,y:2.7,image:twitterLogo,offset:1000,link:'https://www.youtube.com/@stellawisps'},
   {x:2.5,y:2.3,image:twitterLogo,offset:5300,link:'https://twitter.com/stellawisps'},
   {x:1.7,y:1.5,image:twitterLogo,offset:3610,link:'https://stellawisps.newgrounds.com/'},
-  {x:2.5,y:1.3,image:twitterLogo,offset:3610,link:'https://twitter.com/stellawisps'}
+  {x:2.5,y:1.3,image:twitterLogo,offset:3610,link:'https://ko-fi.com/stellawisps'}
 ]
 
 }
@@ -106,14 +134,14 @@ function setup() {
 let icon;
 
 function preload(){
-  porTop = loadImage('img/Portal_Bot.png')
-  porBot = loadImage('img/Portal_Top.png')
-  stella = loadImage('img/StellaUpsideDown.png')
-  stellaTailPiece = loadImage('img/StellaTail.png')
-  twitterLogo = loadImage('img/2021 Twitter logo - white.png')
+  porTop = loadImage('img/Portal_Bot.webp')
+  porBot = loadImage('img/Portal_Top.webp')
+  stella = loadImage('img/StellaUpsideDown.webp')
+  stellaTailPiece = loadImage('img/StellaTail.webp')
+  twitterLogo = loadImage('img/2021 Twitter logo - white.webp')
   youtubeLogo = loadImage('img/yt_logo_mono_dark.png')
-  ngLogo = loadImage('img/ng_tank.png')
-  signature = loadImage('img/Signature.png')
+  KofiLogo = loadImage('img/kofi_s_logo_nolabel.webp')
+  ngLogo = loadImage('img/ng_tank.webp')
 }
 
 
@@ -178,16 +206,20 @@ function draw() {
   //image(signature,150,(displayHeight-150)+viewportOffset,signature.width,signature.height)
   //SOCIAL LINKS
   youtubeButton.x = (windowWidth * WWDiv) + sin((frameCount+(10*50))/50)*5
-  youtubeButton.y = 300
+  youtubeButton.y = 525
   youtubeButton.draw()
 
   twitterButton.x = (windowWidth * WWDiv) + sin((frameCount+(17*50))/50)*5
-  twitterButton.y = 625
+  twitterButton.y = 750
   twitterButton.draw()
 
   NGButton.x = (windowWidth * WWDiv) + sin((frameCount+(22*50))/50)*5
   NGButton.y = 1000
   NGButton.draw()
+
+  KofiButton.x = (windowWidth * WWDiv) + sin((frameCount+(22*50))/50)*5
+  KofiButton.y = 275
+  KofiButton.draw()
   stroke(255)
 }
 
